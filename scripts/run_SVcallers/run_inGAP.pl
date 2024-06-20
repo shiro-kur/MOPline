@@ -76,8 +76,6 @@ close (FILE);
 
 my $header = '';
 my $seq = '';
-my $ref_base = basename ($ref);
-$ref_base = $1 if ($ref_base =~ /(.+)\.fa*s*t*a$/);
 my %ref_chr;
 
 open (FILE, $ref) or die "$ref is not found: $!\n";
@@ -87,7 +85,7 @@ while (my $line = <FILE>){
         if ($seq ne ''){
             if ($non_human == 0){
                 if ($header =~ /^c*h*r*[\dXY]+$/){
-                    my $ref_chr = "$ref_base.$header.fa";
+                    my $ref_chr = "$ref.$header.fa";
                     open (OUT, "> $ref_chr");
                     print OUT ">$header\n";
                     print OUT $seq, "\n";
@@ -96,7 +94,7 @@ while (my $line = <FILE>){
                 }
             }
             else{
-                my $ref_chr = "$ref_base.$header.fa";
+                my $ref_chr = "$ref.$header.fa";
                 open (OUT, "> $ref_chr");
                 print OUT ">$header\n";
                 print OUT $seq, "\n";
@@ -115,7 +113,7 @@ close (FILE);
 if ($seq ne ''){
     if ($non_human == 0){
         if ($header =~ /^c*h*r*[\dXY]+$/){
-            my $ref_chr = "$ref_base.$header.fa";
+            my $ref_chr = "$ref.$header.fa";
             open (OUT, "> $ref_chr");
             print OUT ">$header\n";
             print OUT $seq, "\n";
@@ -124,7 +122,7 @@ if ($seq ne ''){
         }
     }
     else{
-        my $ref_chr = "$ref_base.$header.fa";
+        my $ref_chr = "$ref.$header.fa";
         open (OUT, "> $ref_chr");
         print OUT ">$header\n";
         print OUT $seq, "\n";
