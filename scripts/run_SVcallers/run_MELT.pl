@@ -224,8 +224,8 @@ foreach my $target (@MELT_target){
     if (!-f $target_ref){
         die "$target_ref is not found:\n";
     }
-    my $command_melt = "java -Xmx36G -jar $melt_jar Single -bamfile $cur_dir/$bam_base -h $ref -n $melt_gene -t $target_ref -w . -r $read_length -e $ave_dist -d $min_chr_size -c $coverage -b $excl_chr_list 2>$out_prefix.MELT-$target.log";
-    $command_melt = "java -Xmx36G -jar $melt_jar Single -bamfile $cur_dir/$bam_base -h $ref -n $melt_gene -t $target_ref -w . -r $read_length -e $ave_dist -d $min_chr_size -c $coverage 2>$out_prefix.MELT-$target.log" if ($excl_chr_list eq '');
+    my $command_melt = "java -Xmx18G -jar $melt_jar Single -bamfile $cur_dir/$bam_base -h $ref -n $melt_gene -t $target_ref -w . -r $read_length -e $ave_dist -d $min_chr_size -c $coverage -b $excl_chr_list 2>$out_prefix.MELT-$target.log";
+    $command_melt = "java -Xmx18G -jar $melt_jar Single -bamfile $cur_dir/$bam_base -h $ref -n $melt_gene -t $target_ref -w . -r $read_length -e $ave_dist -d $min_chr_size -c $coverage 2>$out_prefix.MELT-$target.log" if ($excl_chr_list eq '');
     open (OUT, ">> $out_prefix.command.log");
     print OUT "MELT $target: $command_melt\n";
     close (OUT);
